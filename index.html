@@ -104,6 +104,7 @@
   .opt-btn { font-size:13px; padding:7px 14px; border-radius:999px; border:1px solid rgba(60,140,124,.4); background:transparent; color:#cfe6df; white-space:nowrap; }
   .opt-btn.active { background: var(--coral); color:white; border-color: var(--coral); }
   .opt-input { font-size:13px; padding:7px 10px; border-radius:8px; border:1px solid rgba(60,140,124,.4); background:rgba(255,255,255,.95); color:var(--navy); outline:none; }
+  .date-sel { padding:7px 6px; min-width:0; }
   .opt-computed { font-size:12px; font-weight:600; color:var(--coral); align-self:center; padding:6px 12px; background:rgba(232,100,44,.1); border-radius:999px; }
   .souvenir-grid { display:flex; flex-wrap:wrap; gap:10px; }
   .souvenir-chip { font-size:13px; font-weight:600; padding:9px 16px; border-radius:999px; background:var(--card); border:1px solid var(--line); color:var(--navy); }
@@ -515,6 +516,26 @@ async function fetchSouvenirImage(query) {
   }
 }
 
+function renderDateSelects(prefix, isoValue) {
+  var now = new Date();
+  var y = now.getFullYear(), m = now.getMonth() + 1, d = now.getDate();
+  if (isoValue) {
+    var parts = isoValue.split("-");
+    if (parts.length === 3) { y = parseInt(parts[0], 10); m = parseInt(parts[1], 10); d = parseInt(parts[2], 10); }
+  }
+  var years = [];
+  for (var yy = now.getFullYear(); yy <= now.getFullYear() + 2; yy++) years.push(yy);
+  var daysInMonth = new Date(y, m, 0).getDate();
+  var yearOpts = years.map(function (yv) { return '<option value="' + yv + '"' + (yv === y ? " selected" : "") + '>' + yv + '년</option>'; }).join("");
+  var monthOpts = "";
+  for (var mm = 1; mm <= 12; mm++) monthOpts += '<option value="' + mm + '"' + (mm === m ? " selected" : "") + '>' + mm + '월</option>';
+  var dayOpts = "";
+  for (var dd = 1; dd <= daysInMonth; dd++) dayOpts += '<option value="' + dd + '"' + (dd === d ? " selected" : "") + '>' + dd + '일</option>';
+  return '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="y">' + yearOpts + '</select>' +
+    '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="m">' + monthOpts + '</select>' +
+    '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="d">' + dayOpts + '</select>';
+}
+
 function printTripAsPDF() {
   document.body.classList.add("print-mode");
   setTimeout(function () {
@@ -852,11 +873,10 @@ function render() {
         '</div>' +
 
         '<div class="opt-panel">' +
-          '<div class="opt-group"><div class="opt-label">📅 여행일수 (날짜 선택)</div><div class="opt-row">' +
-            '<input type="date" id="optStartDate" class="opt-input" value="' + esc(state.opt.startDate) + '"/>' +
-            '<span style="color:var(--muted);align-self:center;">~</span>' +
-            '<input type="date" id="optEndDate" class="opt-input" value="' + esc(state.opt.endDate) + '"/>' +
-            '<span class="opt-computed">' + calcDaysLabel(state.opt.startDate, state.opt.endDate) + '</span>' +
+          '<div class="opt-group"><div class="opt-label">📅 여행일수 (연도·월·일 직접 선택)</div>' +
+            '<div class="opt-row" style="margin-bottom:6px;"><span style="color:var(--muted);font-size:12px;align-self:center;width:44px;">출발</span>' + renderDateSelects("Start", state.opt.startDate) + '</div>' +
+            '<div class="opt-row"><span style="color:var(--muted);font-size:12px;align-self:center;width:44px;">귀국</span>' + renderDateSelects("End", state.opt.endDate) + '</div>' +
+            '<div class="opt-row" style="margin-top:6px;"><span class="opt-computed">' + calcDaysLabel(state.opt.startDate, state.opt.endDate) + '</span></div>' +
           '</div></div>' +
           '<div class="opt-group"><div class="opt-label">👥 인원 (직접입력)</div><div class="opt-row">' +
             '<input type="number" id="optPeople" class="opt-input" style="width:90px;" min="1" max="20" value="' + esc(state.opt.people) + '"/>' +
@@ -959,10 +979,23 @@ function render() {
 }
 
 function attachEvents() {
-  var optStartDate = document.getElementById("optStartDate");
-  if (optStartDate) optStartDate.addEventListener("change", function (e) { state.opt.startDate = e.target.value; render(); });
-  var optEndDate = document.getElementById("optEndDate");
-  if (optEndDate) optEndDate.addEventListener("change", function (e) { state.opt.endDate = e.target.value; render(); });
+  function readDateSelects(which) {
+    var y = document.querySelector('.date-sel[data-which="' + which + '"][data-part="y"]');
+    var m = document.querySelector('.date-sel[data-which="' + which + '"][data-part="m"]');
+    var d = document.querySelector('.date-sel[data-which="' + which + '"][data-part="d"]');
+    if (!y || !m || !d) return "";
+    var mm = ("0" + m.value).slice(-2), dd = ("0" + d.value).slice(-2);
+    return y.value + "-" + mm + "-" + dd;
+  }
+  document.querySelectorAll(".date-sel").forEach(function (sel) {
+    sel.addEventListener("change", function () {
+      var which = sel.getAttribute("data-which");
+      var iso = readDateSelects(which);
+      if (which === "Start") state.opt.startDate = iso;
+      else state.opt.endDate = iso;
+      render();
+    });
+  });
   var optPeople = document.getElementById("optPeople");
   if (optPeople) optPeople.addEventListener("change", function (e) {
     state.opt.people = parseInt(e.target.value, 10) || 4;
