@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Travel Planner</title>
+<meta name="theme-color" content="#16323A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="여행플래너" />
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFHklEQVR4nO3dsXLbOhCFYTjjOmUeI4VKv3+dwo/iJ0iBGY4ixSSoA2DPgv/X32ty+XshxR7r7dftowCv+hF9AciNgCAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEjeoy/Axeft6+x/8vvPzxFXkstFA3ohl5b/yQWTulBAXaJp/xIXiWn9gCZ0s/911y5p2YCiunm2dkkLBuSTzoN6YYtltE5Att08WGwhrRBQlnQerLGQ0gfUsZ5Tz7LX1/28faVu6C3vH9kUH2H3x+Z2PXOkDOjlRzXtIflfYS/5Asr1M4dcV/uCTAHlfRh5r/xQmoBOPQPb6a9xF/dyBNQ+9xRDX+l23ANaadYP1rg164AaR+w830PZ79H3NxKzT7ZR4/Xb/mu76QZqmVf2dB4kvWXHDZR0lKKWOzLcQ3YBXbOeKmNDXkfY4XRWTedBojkYbaBEUxvt8E599pBLQNTzIEtDFgFRz3+laCg+IOrZ4d9QfED7rlxPZT6B4ID2v4HMZzfN/hxil1BkQNTTzrahsICo5yzPhhxfA1HPdwwnExNQ+HuHJYVMNSAgDi+F20HmdYRRTwurKc0OaOdbxGou5nZmNXkJeW0gpDM1INZPRyZLaF5A1NOdQ0McYZBMCoj1M0j4EmIDQRIcEOtHFzvDGQHxg4soEyYfuYFYP70ETnJ4QKyfWKPnz4toSMIC4vzqK2qeYwPi/HIw9CnEbCDWzwghU+U1ECQDA+L88jHuWQRsIM6vcebPliMMEgKCZFRAvAByM+iJzN5AvAAabfKEOcIgISBICAgSAoJkSEC8BfM04rlM3UC8BZtj5pw5wiAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEhc/k40Okr/d6L5vR9PI54LRxgkBAQJAUFCQJAYfV4Yuljk88J4I+Zm0BPhCIOEgCCx+9RmKJb61GZeBvkY9yw4wiCJCYhTbISQqY4NiFPMwdCnEHaEsYT6iponr4EgGR4Qp1is0fOP3ECcYr0ETnJGQCyhKBMmH/waiCWki50hL6IhmRTQzi5lCSl2pjfnlQMbCJJ5AbGEugtfP8Xn70TT0FkO9RSOMIiMPi+MJdTOZP0Utw1EQy2spmT3qc1W0zG0P5+rfGozP9wYIWSqXkdYxRL6juFkwgLiIDvL7fCqIjcQDbXzrKeEH2E01MK2nhIe0CEaMp9AfECH30DmExzq8N7D38/GB1Ro6Bv+9RSTgAoNPUlRT/EJqNDQnSz1lFLeft0+oq/hHy2V+Iyvu3S3b7SBqpbprLqK0tVTDAMqV20oYz3F8AjbNCZiONOzUt+p4waqGueVfRWlrqc4b6CqvQ/bEX9njVtzD6haY9ablW4nR0Dl5FFlO/c17uJemoDKSy93TJ5B3is/lCmgKtfDyHW1L8gXUBHeeU17Nv5X2EvKgCrxDXz3R+V2PXMkDqjq+O9Apx5h1Nd1kz6gkvzfElPXU0p5j76ADuozSJdR9nSqFQKqtudhXtIa3WzWCWhju5AWS6daMKDKZyEt2c1m2YA2USWt3c1m/YA29090UEwXiebehQK69/ykl/+ZwyAXDegZNbzG9zcSkQIBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQfIXxpnsyMzX0+YAAAAASUVORK5CYII=" />
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFHklEQVR4nO3dsXLbOhCFYTjjOmUeI4VKv3+dwo/iJ0iBGY4ixSSoA2DPgv/X32ty+XshxR7r7dftowCv+hF9AciNgCAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEjeoy/Axeft6+x/8vvPzxFXkstFA3ohl5b/yQWTulBAXaJp/xIXiWn9gCZ0s/911y5p2YCiunm2dkkLBuSTzoN6YYtltE5Att08WGwhrRBQlnQerLGQ0gfUsZ5Tz7LX1/28faVu6C3vH9kUH2H3x+Z2PXOkDOjlRzXtIflfYS/5Asr1M4dcV/uCTAHlfRh5r/xQmoBOPQPb6a9xF/dyBNQ+9xRDX+l23ANaadYP1rg164AaR+w830PZ79H3NxKzT7ZR4/Xb/mu76QZqmVf2dB4kvWXHDZR0lKKWOzLcQ3YBXbOeKmNDXkfY4XRWTedBojkYbaBEUxvt8E599pBLQNTzIEtDFgFRz3+laCg+IOrZ4d9QfED7rlxPZT6B4ID2v4HMZzfN/hxil1BkQNTTzrahsICo5yzPhhxfA1HPdwwnExNQ+HuHJYVMNSAgDi+F20HmdYRRTwurKc0OaOdbxGou5nZmNXkJeW0gpDM1INZPRyZLaF5A1NOdQ0McYZBMCoj1M0j4EmIDQRIcEOtHFzvDGQHxg4soEyYfuYFYP70ETnJ4QKyfWKPnz4toSMIC4vzqK2qeYwPi/HIw9CnEbCDWzwghU+U1ECQDA+L88jHuWQRsIM6vcebPliMMEgKCZFRAvAByM+iJzN5AvAAabfKEOcIgISBICAgSAoJkSEC8BfM04rlM3UC8BZtj5pw5wiAhIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEhc/k40Okr/d6L5vR9PI54LRxgkBAQJAUFCQJAYfV4Yuljk88J4I+Zm0BPhCIOEgCCx+9RmKJb61GZeBvkY9yw4wiCJCYhTbISQqY4NiFPMwdCnEHaEsYT6iponr4EgGR4Qp1is0fOP3ECcYr0ETnJGQCyhKBMmH/waiCWki50hL6IhmRTQzi5lCSl2pjfnlQMbCJJ5AbGEugtfP8Xn70TT0FkO9RSOMIiMPi+MJdTOZP0Utw1EQy2spmT3qc1W0zG0P5+rfGozP9wYIWSqXkdYxRL6juFkwgLiIDvL7fCqIjcQDbXzrKeEH2E01MK2nhIe0CEaMp9AfECH30DmExzq8N7D38/GB1Ro6Bv+9RSTgAoNPUlRT/EJqNDQnSz1lFLeft0+oq/hHy2V+Iyvu3S3b7SBqpbprLqK0tVTDAMqV20oYz3F8AjbNCZiONOzUt+p4waqGueVfRWlrqc4b6CqvQ/bEX9njVtzD6haY9ablW4nR0Dl5FFlO/c17uJemoDKSy93TJ5B3is/lCmgKtfDyHW1L8gXUBHeeU17Nv5X2EvKgCrxDXz3R+V2PXMkDqjq+O9Apx5h1Nd1kz6gkvzfElPXU0p5j76ADuozSJdR9nSqFQKqtudhXtIa3WzWCWhju5AWS6daMKDKZyEt2c1m2YA2USWt3c1m/YA29090UEwXiebehQK69/ykl/+ZwyAXDegZNbzG9zcSkQIBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQfIXxpnsyMzX0+YAAAAASUVORK5CYII=" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:#16323A; --sand:#F4ECDD; --coral:#E8642C; --teal:#3C8C7C; --muted:#8FA3A6; --card:#FBF7EE; --line:#E6DCC8;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; background: var(--sand); color: var(--navy); }
+  .mono { font-family: "JetBrains Mono", monospace; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  .header { background: var(--navy); color: var(--sand); padding: 36px 0 28px; }
+  .eyebrow { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display:flex; align-items:center; gap:6px; }
+  h1 { font-family: "Fraunces", Georgia, serif; font-size: 32px; line-height: 1.15; margin: 0 0 24px; font-weight: 600; }
+  .row { display:flex; gap:10px; flex-wrap: wrap; align-items:center; }
+  .input-bar { flex:1; display:flex; align-items:center; gap:10px; background: var(--sand); border-radius: 12px; padding: 10px 14px; min-width: 280px; flex-wrap: nowrap; }
+  .input-bar input { flex:1; border:none; outline:none; background:transparent; color: var(--navy); font-size: 15px; }
+  button { font-family: inherit; cursor: pointer; border: none; }
+  .btn-primary { background: var(--coral); color:white; font-weight:600; font-size:14px; padding:10px 16px; border-radius:8px; white-space:nowrap; flex-shrink:0; }
+  .btn-primary:disabled { opacity:.6; cursor:default; }
+  .btn-ghost { background: transparent; border:1px solid rgba(255,255,255,.3); color:#cfe6df; font-size:12px; padding:7px 14px; border-radius:999px; }
+  .btn-key { background: transparent; border:1px solid rgba(60,140,124,.5); color:#cfe6df; font-size:12px; padding:8px 16px; border-radius:8px; white-space:nowrap; }
+  .chip { font-size:12px; padding:6px 14px; border-radius:999px; border:1px solid rgba(60,140,124,.4); color:#cfe6df; background:transparent; }
+  .folder { margin-bottom:8px; }
+  .folder-head { display:flex; align-items:center; gap:8px; background:transparent; border:none; color:#cfe6df; font-size:13px; font-weight:600; padding:4px 0; }
+  .folder-count { font-size:11px; color:var(--muted); background:rgba(255,255,255,.08); border-radius:999px; padding:1px 8px; }
+  .folder-body { display:flex; gap:8px; flex-wrap:wrap; padding:8px 0 4px 22px; }
+  .chip-wrap { display:inline-flex; align-items:stretch; border:1px solid rgba(60,140,124,.4); border-radius:999px; overflow:hidden; }
+  .chip-wrap .chip { border:none; border-radius:0; }
+  .chip-del { background:transparent; border:none; border-left:1px solid rgba(60,140,124,.3); color:#ff9d85; font-size:11px; padding:6px 10px; }
+  .chip-del:hover { background:rgba(232,100,44,.15); }
+  .chip-coral { border-color: rgba(232,100,44,.4); color:#ffcab3; }
+  .error-text { color:#ffb4a0; font-size:12px; margin-top:10px; }
+  .meta-card { background:white; border:1px solid var(--line); border-radius:16px; padding:20px; margin-top:-22px; box-shadow:0 8px 24px rgba(22,50,58,.08); display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
+  @media (min-width:640px){ .meta-card{ grid-template-columns: repeat(4,1fr); } }
+  .meta-label { font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:4px; font-family: "JetBrains Mono", monospace; }
+  .meta-value { font-size:14px; font-weight:500; }
+  .meta-input { font-size:14px; font-weight:500; color:var(--navy); border:none; border-bottom:1px dashed transparent; background:transparent; padding:2px 0; width:100%; font-family:inherit; }
+  .meta-input:hover, .meta-input:focus { border-bottom-color: var(--coral); outline:none; }
+  .budget-card { background:white; border:1px solid var(--line); border-radius:16px; padding:20px; margin-top:12px; }
+  .budget-head { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-family:"JetBrains Mono",monospace; }
+  .budget-bar { display:flex; width:100%; height:12px; border-radius:999px; overflow:hidden; margin-bottom:14px; }
+  .budget-legend { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; }
+  @media (min-width:640px){ .budget-legend{ grid-template-columns: repeat(5,1fr); } }
+  .budget-item { display:flex; align-items:center; gap:8px; }
+  .budget-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .budget-label { font-size:11px; color:var(--muted); }
+  .budget-amount { font-size:13px; font-weight:600; font-family:"JetBrains Mono",monospace; }
+  .card-price { font-size:14px; font-weight:600; color: var(--coral); text-align:right; font-family:"JetBrains Mono",monospace; }
+  .status-text { text-align:center; font-size:12px; color: var(--muted); margin-top:12px; }
+  .keybox, .sharebox { background: rgba(255,255,255,.06); border-radius:12px; padding:14px 16px; margin-top:12px; font-size:13px; }
+  .keybox input, .sharebox input { width:100%; font-size:12px; background:white; color:var(--navy); border-radius:6px; padding:8px 10px; border:none; outline:none; }
+  .sharebox .flexrow { display:flex; gap:8px; flex-wrap:wrap; margin: 10px 0; }
+  .sharebox .flexrow input { flex:1; min-width:130px; }
+  .sharebox button { font-size:12px; font-weight:600; padding:8px 12px; border-radius:6px; color:white; }
+  .tabs { display:flex; gap:8px; overflow-x:auto; padding: 22px 0 4px; }
+  .tab { padding:10px 16px; border-radius:12px; font-size:14px; font-weight:500; white-space:nowrap; border:1px solid var(--line); background:white; color: rgba(22,50,58,.7); }
+  .tab.active { background: var(--navy); color:white; border-color: var(--navy); }
+  .subtabs { display:flex; gap:8px; margin-bottom:14px; }
+  .subtab { padding:7px 14px; border-radius:999px; font-size:13px; font-weight:600; border:1px solid var(--line); background:var(--card); color:rgba(22,50,58,.65); }
+  .subtab.active { background: var(--coral); color:white; border-color: var(--coral); }
+  .opt-panel { margin-top:14px; display:grid; gap:12px; }
+  .opt-group { }
+  .opt-label { font-size:12px; color:var(--muted); margin-bottom:6px; }
+  .opt-row { display:flex; gap:8px; flex-wrap:wrap; }
+  .opt-btn { font-size:13px; padding:7px 14px; border-radius:999px; border:1px solid rgba(60,140,124,.4); background:transparent; color:#cfe6df; white-space:nowrap; }
+  .opt-btn.active { background: var(--coral); color:white; border-color: var(--coral); }
+  .opt-input { font-size:13px; padding:7px 10px; border-radius:8px; border:1px solid rgba(60,140,124,.4); background:rgba(255,255,255,.95); color:var(--navy); outline:none; }
+  .opt-computed { font-size:12px; font-weight:600; color:var(--coral); align-self:center; padding:6px 12px; background:rgba(232,100,44,.1); border-radius:999px; }
+  .souvenir-grid { display:flex; flex-wrap:wrap; gap:10px; }
+  .souvenir-chip { font-size:13px; font-weight:600; padding:9px 16px; border-radius:999px; background:var(--card); border:1px solid var(--line); color:var(--navy); }
+  .souvenir-chip:hover { border-color: var(--coral); }
+  .souvenir-detail { width:100%; background:var(--card); border:1px solid #EFE7D6; border-radius:12px; padding:14px; margin-top:-2px; margin-bottom:4px; }
+  .souvenir-img { max-width:100%; max-height:220px; border-radius:10px; display:block; object-fit:cover; }
+  .souvenir-loading { font-size:13px; color:var(--muted); }
+  .section { background:white; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 2px 10px rgba(22,50,58,.05); margin: 18px 0; }
+  .section-title { padding:14px 18px; border-bottom:1px solid #EFE7D6; background: var(--card); font-weight:600; font-size:15px; }
+  .section-body { padding:18px; }
+  .card-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px; border-radius:12px; background: var(--card); border:1px solid #EFE7D6; margin-bottom:10px; }
+  .card-row:last-child{ margin-bottom:0; }
+  .card-name { font-weight:600; font-size:14px; }
+  .card-note { font-size:12px; color: var(--muted); margin-top:2px; }
+  .card-link { font-size:12px; color: var(--teal); text-decoration:none; display:block; text-align:right; margin-top:4px; }
+  .pill { display:inline-block; flex-shrink:0; font-size:11px; font-weight:600; padding:3px 10px; border-radius:999px; background: rgba(60,140,124,.1); color:#256456; border:1px solid rgba(60,140,124,.3); white-space:nowrap; }
+  .grid2 { display:grid; gap:10px; }
+  @media (min-width:640px){ .grid2.cols2 { grid-template-columns: 1fr 1fr; } }
+  .spot-card { padding:14px; border-radius:12px; background:var(--card); border:1px solid #EFE7D6; }
+  .spot-top { display:flex; justify-content:space-between; align-items:center; }
+  .day-block { margin-bottom: 22px; }
+  .day-title { font-weight:700; font-size:14px; font-family: monospace; }
+  .day-sub { font-size:12px; color: var(--muted); margin-left:8px; }
+  .timeline { position:relative; padding-left:28px; margin-top:10px; }
+  .timeline::before { content:""; position:absolute; left:9px; top:6px; bottom:6px; width:0; border-left:1px dashed rgba(60,140,124,.5); }
+  .stop { position:relative; margin-bottom:14px; }
+  .stop::before { content:""; position:absolute; left:-28px; top:3px; width:14px; height:14px; border-radius:50%; background: var(--coral); border:2px solid white; box-shadow:0 0 0 1px #E6DCC8; }
+  .stop-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; }
+  .stop-time { font-family: monospace; font-weight:600; color: rgba(22,50,58,.6); width:42px; font-size:12px; }
+  .stop-dist { font-size:11px; color: var(--muted); font-family: monospace; }
+  .footer-pad { height: 40px; }
+  .printable-export { display:none; }
+  body.print-mode .app-interactive { display:none !important; }
+  body.print-mode .printable-export { display:block !important; }
+  @media print {
+    body.print-mode .app-interactive { display:none !important; }
+    body.print-mode .printable-export { display:block !important; }
+    .print-page { page-break-after: always; padding: 24px; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+(function () {
+"use strict";
+
+var CATEGORIES = [
+  { key: "flight", label: "항공권" }, { key: "stay", label: "숙소" }, { key: "car", label: "렌트카" },
+  { key: "spots", label: "관광/휴양지" }, { key: "food", label: "식사" }, { key: "cafe", label: "카페" },
+  { key: "shop", label: "쇼핑몰" }, { key: "souvenir", label: "추천 기념품" }, { key: "itinerary", label: "일정표" },
+];
+
+var DEFAULT_TRIP = {
+  meta: { destination: "삿포로 (홋카이도)", country: "일본", dates: "3박4일",
+    travelers: "4인 가족", budgetGoal: 2200000, budgetMax: 3000000,
+    status: "실제 명칭 기준 조사 데이터입니다. 가격은 시기·환율에 따라 변동되니 예약 전 최신가 확인 필요." },
+  flights: [
+    { name: "진에어 (인천 → 신치토세)", price: "약 25~35만원/인 (왕복)", note: "직항, 좌석수 많아 가족 단위 예약 용이", link: "https://www.jinair.com" },
+    { name: "제주항공 (인천 → 신치토세)", price: "약 24~34만원/인", note: "직항, 특가 프로모션 빈번", link: "https://www.jejuair.net" },
+    { name: "에어부산 (부산 → 신치토세)", price: "약 26~36만원/인", note: "지방 출발 시 이동 편리, 직항", link: "https://www.airbusan.com" },
+    { name: "이스타항공 (인천 → 신치토세)", price: "약 25~33만원/인", note: "직항, 저가 특가 자주 발생", link: "https://www.eastarjet.com" },
+    { name: "대한항공 (인천 → 신치토세)", price: "약 45~60만원/인", note: "수하물·기내식 포함, 일정 변경 유연", link: "https://www.koreanair.com" },
+    { name: "아시아나항공 (인천 → 신치토세)", price: "약 42~55만원/인", note: "대형기 운항, 가족 단체석 확보 용이", link: "https://flyasiana.com" },
+  ],
+  stays: [
+    { tier: "가성비", name: "카락사 호텔 삿포로", price: "1박 약 8~11만원", note: "스스키노역 도보 5분, 커넥팅룸 보유", link: "https://karaksahotels.com/kr/sapporo/" },
+    { tier: "가성비", name: "호텔 WBF 삿포로 츄오", price: "1박 약 9~12만원", note: "오도리역 도보 2분, 패밀리캐빈룸(최대4인)", link: "https://www.hotelwbf.com/sapporo-chuo/ko/" },
+    { tier: "보통", name: "JR타워 호텔 닛코 삿포로", price: "1박 약 20~26만원", note: "삿포로역 직결, 교통 최고의 편의성", link: "https://www.jrhotels.co.jp/tower/korean/" },
+    { tier: "럭셔리", name: "소세이 삿포로 엠갤러리", price: "1박 약 45만원~", note: "5성급, 옛 삿포로 맥주 양조장 터", link: "https://www.booking.com/searchresults.html?ss=Hotel+Sosei+Sapporo+MGallery" },
+  ],
+  spots: [
+    { type: "관광", name: "오도리 공원", note: "삿포로 도심 한복판, 산책·축제 명소", dist: "호텔에서 약 1km", link: "https://www.visit-hokkaido.jp/kr/spot/detail_10004.html" },
+    { type: "관광", name: "삿포로 맥주 박물관", note: "일본 유일 맥주 박물관, 시음 코너", dist: "호텔에서 약 3km", link: "https://www.sapporobeer.jp/english/brewery/s_museum/ko/" },
+    { type: "관광", name: "시로이 코이비토 파크", note: "초콜릿 테마파크, 체험·공장 견학", dist: "호텔에서 약 6km", link: "https://www.shiroikoibitopark.jp/ko/" },
+    { type: "관광", name: "오타루 운하 + 사카이마치 거리", note: "석조 창고와 운하, 유리공예·오르골 거리", dist: "호텔에서 약 35km", link: "https://www.google.com/maps/search/오타루운하" },
+    { type: "관광", name: "오타루 텐구야마 로프웨이", note: "오타루 시내·항구 전망, 일몰 명소", dist: "호텔에서 약 38km", link: "https://en.ropeway.co.jp/tenguyama/" },
+    { type: "관광", name: "삿포로 시계탑", note: "도심 한복판 역사 랜드마크", dist: "호텔에서 약 1.5km", link: "https://www.google.com/maps/search/삿포로+시계탑" },
+    { type: "관광", name: "홋카이도 구 본청사", note: "붉은벽돌 청사, 사진 명소", dist: "호텔에서 약 2km", link: "https://www.google.com/maps/search/홋카이도+구본청사" },
+    { type: "관광", name: "삿포로 TV타워", note: "오도리공원 전망대", dist: "호텔에서 약 1.2km", link: "https://www.google.com/maps/search/삿포로+TV타워" },
+    { type: "관광", name: "노보리베츠 지옥계곡", note: "화산 분화구 지대, 유황 냄새 명소", dist: "호텔에서 약 90km", link: "https://www.google.com/maps/search/노보리베츠+지옥계곡" },
+    { type: "관광", name: "삿포로 시계탑 인근 구시장", note: "근대 건축물 거리 산책", dist: "호텔에서 약 2km", link: "https://www.google.com/maps/search/삿포로+구시장" },
+    { type: "휴양", name: "조잔케이 온천", note: "삿포로 근교 산속 온천 마을", dist: "호텔에서 약 25km", link: "https://www.google.com/maps/search/조잔케이온천" },
+    { type: "휴양", name: "마루야마 공원 + 홋카이도 신궁", note: "도심 속 숲 산책, 조용한 휴식", dist: "호텔에서 약 4km", link: "http://www.hokkaidojingu.or.jp/" },
+    { type: "휴양", name: "비에이 시키사이노오카", note: "광활한 꽃밭 언덕, 트랙터버스 노롯코 운행", dist: "호텔에서 약 115km", link: "http://www.shikisainooka.jp/" },
+    { type: "휴양", name: "팜 토미타 (후라노 라벤더밭)", note: "보랏빛 라벤더 명소", dist: "호텔에서 약 125km", link: "http://www.farm-tomita.co.jp/" },
+    { type: "휴양", name: "모리히코 플랜테이션 인근 산책로", note: "한적한 주택가, 카페와 함께 산책", dist: "호텔에서 약 7km", link: "https://www.google.com/maps/search/모리히코+플랜테이션+삿포로" },
+    { type: "휴양", name: "노보리베츠 온천", note: "홋카이도 대표 온천 리조트 지대", dist: "호텔에서 약 90km", link: "https://www.google.com/maps/search/노보리베츠+온천" },
+    { type: "휴양", name: "오타루 텐구야마 자연공원", note: "산책 + 다람쥐 먹이주기 체험", dist: "호텔에서 약 38km", link: "https://www.google.com/maps/search/텐구야마+자연공원" },
+    { type: "휴양", name: "사케 온천 시코츠코", note: "맑은 칼데라 호수, 보트투어", dist: "호텔에서 약 65km", link: "https://www.google.com/maps/search/시코츠코" },
+    { type: "휴양", name: "모이와야마 전망대", note: "삿포로 시내 야경 명소, 케이블카", dist: "호텔에서 약 8km", link: "https://www.google.com/maps/search/모이와야마+전망대" },
+    { type: "휴양", name: "나카지마 공원", note: "도심 속 호수와 정원 산책", dist: "호텔에서 약 3km", link: "https://www.google.com/maps/search/나카지마공원" },
+  ],
+  food: [
+    { meal: "조식", name: "니조시장 오이소", note: "신선 해산물 카이센동·생선구이", link: "https://www.google.com/maps/search/니조시장+오이소" },
+    { meal: "조식", name: "돈베이 (니조시장 인근)", note: "아침 7시 오픈 덮밥 전문점", link: "https://www.google.com/maps/search/돈베이+니조시장" },
+    { meal: "조식", name: "JR타워 호텔 조식뷔페", note: "숙소 내 간단 조식", link: "https://www.jrhotels.co.jp/tower/korean/" },
+    { meal: "조식", name: "키친 ON 조식뷔페", note: "삿포로역 인근 조식 전문", link: "https://www.google.com/maps/search/키친ON+삿포로" },
+    { meal: "조식", name: "모스버거 삿포로역점", note: "아침 일찍 간단히 해결", link: "https://www.google.com/maps/search/모스버거+삿포로역" },
+    { meal: "조식", name: "삿포로 그랜드 호텔 조식", note: "전통 있는 호텔 조식뷔페", link: "https://www.google.com/maps/search/삿포로그랜드호텔" },
+    { meal: "조식", name: "이즈모야 (니조시장)", note: "연어알 덮밥 전문", link: "https://www.google.com/maps/search/이즈모야+니조시장" },
+    { meal: "조식", name: "카페 드 크리에 삿포로역점", note: "샌드위치+커피 조식 세트", link: "https://www.google.com/maps/search/카페드크리에+삿포로역" },
+    { meal: "조식", name: "마루이 이마이 백화점 식품관", note: "베이커리·델리 간단 조식", link: "https://www.google.com/maps/search/마루이이마이+삿포로" },
+    { meal: "조식", name: "토요히라가와 강변 카페", note: "강변 뷰 조식 카페", link: "https://www.google.com/maps/search/토요히라가와+카페" },
+    { meal: "중식", name: "스프카레 가라쿠", note: "삿포로 대표 수프카레", link: "https://www.google.com/maps/search/스프카레+가라쿠+삿포로" },
+    { meal: "중식", name: "라멘 요코초 미소라멘", note: "삿포로식 미소라멘 골목", link: "https://www.google.com/maps/search/삿포로+라멘요코초" },
+    { meal: "중식", name: "르타오 (오타루 본점)", note: "오타루 관광 중 가벼운 점심+디저트", link: "https://www.letao.jp/" },
+    { meal: "중식", name: "스미레 라멘 본점", note: "진한 돈코츠 미소라멘", link: "https://www.google.com/maps/search/스미레+라멘+본점" },
+    { meal: "중식", name: "오타루 스시야 거리", note: "신선한 오타루 초밥 골목", link: "https://www.google.com/maps/search/오타루+스시야거리" },
+    { meal: "중식", name: "수프카레 스아게+", note: "삿포로 인기 수프카레 체인", link: "https://www.google.com/maps/search/수프카레+스아게" },
+    { meal: "중식", name: "삿포로 라멘 共和国", note: "다양한 라멘 8개 매장 모음", link: "https://www.google.com/maps/search/삿포로라멘공화국" },
+    { meal: "중식", name: "징기스칸 산카쿠야마 (점심세트)", note: "점심 한정 양고기 세트", link: "https://www.google.com/maps/search/산카쿠야마+삿포로" },
+    { meal: "중식", name: "마루야마 우동 혼텐", note: "정성스런 수타 우동", link: "https://www.google.com/maps/search/마루야마우동+혼텐" },
+    { meal: "중식", name: "오타루 회전초밥 효테이", note: "가성비 좋은 회전초밥", link: "https://www.google.com/maps/search/효테이+오타루" },
+    { meal: "석식", name: "효우세츠노몬 (게요리 코스)", note: "1964년 개업, 게 코스요리 전문", link: "https://www.google.com/maps/search/효우세츠노몬+삿포로" },
+    { meal: "석식", name: "징기스칸 다루마 (스스키노)", note: "삿포로 명물 양고기 징기스칸", link: "https://www.google.com/maps/search/다루마+징기스칸+삿포로" },
+    { meal: "석식", name: "카니혼케", note: "대표 털게 전문점, 가족 회식 코스", link: "https://www.google.com/maps/search/카니혼케+삿포로" },
+    { meal: "석식", name: "스스키노 이자카야 골목", note: "다양한 이자카야 밀집 골목", link: "https://www.google.com/maps/search/스스키노+이자카야" },
+    { meal: "석식", name: "삿포로 비루엔 (양고기 뷔페)", note: "옛 맥주공장, 징기스칸+생맥주 무제한", link: "https://www.google.com/maps/search/삿포로비루엔" },
+    { meal: "석식", name: "키카이 (해산물 이자카야)", note: "신선 해산물 안주 전문", link: "https://www.google.com/maps/search/키카이+삿포로" },
+    { meal: "석식", name: "회전초밥 네무로 하나마루", note: "삿포로역 인기 회전초밥", link: "https://www.google.com/maps/search/네무로하나마루+삿포로" },
+    { meal: "석식", name: "스스키노 야키토리 골목", note: "숯불 야키토리 전문점 거리", link: "https://www.google.com/maps/search/스스키노+야키토리" },
+    { meal: "석식", name: "킹크랍 전문점 카니야", note: "킹크랍 단품·코스 전문", link: "https://www.google.com/maps/search/카니야+삿포로" },
+    { meal: "석식", name: "삿포로 스테이크 하우스 베르크", note: "홋카이도산 와규 스테이크", link: "https://www.google.com/maps/search/베르크+스테이크+삿포로" },
+  ],
+  cafes: [
+    { meal: "조식 근처", name: "아틀리에 모리히코", note: "'커피의 미술관' 컨셉, 모닝세트 8~11시", link: "https://www.google.com/maps/search/아틀리에+모리히코" },
+    { meal: "조식 근처", name: "sal coffee", note: "삿포로 성수동 느낌의 모던 카페", link: "https://www.google.com/maps/search/sal+coffee+삿포로" },
+    { meal: "중식 근처", name: "카히차칸 오도리텐", note: "1971년부터 이어온 클래식 핸드드립", link: "https://www.google.com/maps/search/可否茶館+大通店" },
+    { meal: "중식 근처", name: "모리히코 플랜테이션", note: "로스팅 공장 병설", link: "https://www.google.com/maps/search/모리히코+플랜테이션" },
+    { meal: "석식 근처", name: "모리히코 예술극장점", note: "도서관 병설, 과일샌드 추천", link: "https://www.google.com/maps/search/모리히코+예술극장" },
+    { meal: "석식 근처", name: "스스키노 시메파르페 카페", note: "밤에만 여는 파르페 디저트 명소", link: "https://www.google.com/maps/search/스스키노+시메파르페" },
+  ],
+  shops: [
+    { name: "타누키코지 상점가", note: "홋카이도 최대 아케이드 상점가", link: "http://www.tanukikoji.or.jp/" },
+    { name: "니조시장", note: "시로이코이비토·털게 등 선물용 식품", link: "https://www.google.com/maps/search/니조시장+삿포로" },
+    { name: "삿포로역 다이마루 백화점 + 스텔라플레이스", note: "명품·패션, 면세·텍스리펀", link: "https://www.sapporo-stellarplace.jp/" },
+    { name: "시로이 코이비토 파크 기프트샵", note: "한정판 굿즈", link: "https://www.shiroikoibitopark.jp/ko/" },
+    { name: "오타루 오르골당 + 사카이마치 거리", note: "유리공예·오르골, 르타오 치즈케이크", link: "https://www.otaru-orgel.co.jp/" },
+  ],
+  souvenirs: [
+    { name: "시로이 코이비토 (화이트초콜릿 쿠키)", note: "삿포로 대표 과자, 시로이코이비토파크·공항·편의점에서 구매", img: "Shiroi Koibito chocolate cookie" },
+    { name: "로이즈 생초콜릿", note: "신치토세공항 면세점·로이즈 매장에서 구매, 냉장보관 필수", img: "Royce Nama Chocolate Hokkaido" },
+    { name: "유바리 멜론 젤리/쿠키", note: "니조시장·백화점 식품관에서 구매", img: "Yubari melon sweets Hokkaido" },
+    { name: "징기스칸 타레 (양념소스)", note: "마트·니조시장에서 구매, 집에서 징기스칸 재현 가능", img: "Jingisukan sauce Hokkaido" },
+    { name: "오타루 유리공예품", note: "오타루 오르골당·사카이마치 거리 공방에서 구매", img: "Otaru glass craft" },
+    { name: "삿포로 맥주 굿즈", note: "삿포로 맥주박물관 기프트샵에서 구매", link: "https://www.sapporobeer.jp/", img: "Sapporo beer museum gift" },
+    { name: "라벤더 화장품/향수", note: "팜토미타·후라노 라벤더밭 매장에서 구매", img: "Furano lavender cosmetics" },
+    { name: "롯카테이 마루세이 버터샌드", note: "삿포로역·다이마루 백화점 식품관에서 구매", img: "Marusei butter sandwich Hokkaido" },
+    { name: "르타오 치즈케이크 (도쿄나마 등)", note: "오타루 본점·삿포로역 매장에서 구매", img: "LeTAO cheesecake Otaru" },
+    { name: "키타키츠네 목각인형/굿즈", note: "관광지 기념품샵·니조시장에서 구매", img: "Hokkaido fox wooden figure souvenir" },
+  ],
+  cars: [
+    { name: "세단 · 토요타 코롤라", price: "5만원/일", note: "보험 포함", link: "https://www.toyota-rentacar.jp/" },
+    { name: "SUV · 닛산 엑스트레일", price: "8만원/일", note: "보험 포함, 4인+캐리어 여유", link: "https://nissan-rentacar.com/" },
+    { name: "미니밴 · 토요타 알파드", price: "12만원/일", note: "보험 포함, 4인 가족 추천", link: "https://www.toyota-rentacar.jp/" },
+  ],
+  itinerary: [
+    { day: "DAY 1", sub: "도착 → 호텔에서 가장 먼 지점부터 (오타루 방면)", stops: [
+      { time: "10:30", label: "신치토세공항 도착 · 렌트카 수령", kind: "이동" },
+      { time: "12:00", label: "오타루 운하 + 사카이마치 거리 (점심: 르타오 카페)", kind: "관광·식사", dist: "약 35km" },
+      { time: "14:30", label: "오타루 텐구야마 로프웨이 전망", kind: "관광", dist: "약 38km" },
+      { time: "16:30", label: "오타루 오르골당 + 기념품샵", kind: "쇼핑" },
+      { time: "19:00", label: "삿포로 시내 호텔 체크인 (저녁: 징기스칸 다루마)", kind: "이동·식사" },
+    ]},
+    { day: "DAY 2", sub: "근교 휴양 코스 (조잔케이 + 도심 외곽)", stops: [
+      { time: "08:30", label: "조식: 아틀리에 모리히코 모닝세트", kind: "식사·카페" },
+      { time: "10:00", label: "조잔케이 온천 마을 산책 + 족욕", kind: "휴양", dist: "약 25km" },
+      { time: "13:00", label: "점심: 스프카레 가라쿠", kind: "식사" },
+      { time: "15:00", label: "시로이 코이비토 파크 (초콜릿 체험)", kind: "관광", dist: "약 6km" },
+      { time: "17:30", label: "마루야마 공원 + 홋카이도 신궁 산책", kind: "휴양", dist: "약 4km" },
+      { time: "19:30", label: "저녁: 카니혼케 (털게 코스)", kind: "식사" },
+    ]},
+    { day: "DAY 3", sub: "도심 관광 + 쇼핑 코스", stops: [
+      { time: "08:30", label: "조식: 니조시장 오이소 카이센동", kind: "식사" },
+      { time: "10:30", label: "삿포로 맥주 박물관 (시음 코너)", kind: "관광", dist: "약 3km" },
+      { time: "12:30", label: "점심: 라멘 요코초 미소라멘", kind: "식사" },
+      { time: "14:00", label: "오도리 공원 산책", kind: "관광·휴양", dist: "약 1km" },
+      { time: "15:30", label: "타누키코지 상점가 + 다이마루 백화점 쇼핑", kind: "쇼핑" },
+      { time: "17:00", label: "카페: 카히차칸 오도리텐", kind: "카페" },
+      { time: "19:00", label: "저녁: 효우세츠노몬 (게요리 코스)", kind: "식사" },
+    ]},
+    { day: "DAY 4", sub: "출국 → 호텔과 가까운 곳부터", stops: [
+      { time: "09:00", label: "조식: sal coffee 가벼운 브런치", kind: "식사·카페" },
+      { time: "10:30", label: "니조시장 마지막 기념품 쇼핑", kind: "쇼핑", dist: "약 1.5km" },
+      { time: "12:00", label: "점심: 공항 인근 식당", kind: "식사" },
+      { time: "13:30", label: "렌트카 반납 · 신치토세공항 출국", kind: "이동" },
+    ]},
+  ],
+};
+
+function buildSystemPrompt(opt) {
+  var peopleNum = parseInt(opt.people, 10) || 4;
+  var daysLabel = calcDaysLabel(opt.startDate, opt.endDate);
+  var nights = parseInt(daysLabel, 10) || 3;
+  var totalDays = nights + 1;
+  var goalWon = (parseInt(opt.budgetGoal, 10) || 220) * 10000;
+  var maxWon = (parseInt(opt.budgetMax, 10) || 300) * 10000;
+  var typeNote = opt.type === "관광형" ? "관광지 비중을 높여서 (관광:휴양 = 약 7:3)"
+    : opt.type === "휴양형" ? "휴양지 비중을 높여서 (관광:휴양 = 약 3:7)"
+    : "관광/휴양 균형있게 (약 5:5)";
+
+  return "너는 한국 가족여행 플래너야. 사용자가 입력한 여행지에 대해 아래 조건으로 실제 존재하는 장소/상호만 사용해 JSON을 생성해.\n\n" +
+"조건(반드시 모두 충족해야 함, 개수가 부족하면 절대 안 됨):\n" +
+"- flights 배열: 정확히 5~6개 (" + opt.departure + " 출발 기준, 저가항공 위주 + 대형항공사 1~2개 포함, 서로 다른 항공사여야 함)\n" +
+"- stays 배열: 정확히 4개 (tier가 \"가성비\" 2개, \"보통\" 1개, \"럭셔리\" 1개, " + peopleNum + "인 기준 객실, 총 " + nights + "박)\n" +
+"- cars 배열: 정확히 3개 (세단/SUV/미니밴 각 1개, 실제 렌터카 회사·차종명, 1일 가격, note는 \"보험 포함\" 같은 짧은 한 줄, link는 렌터카 회사 예약 페이지)\n" +
+"- food 배열: meal이 \"조식\"인 항목 9~10개, \"중식\"인 항목 9~10개, \"석식\"인 항목 9~10개 (각 끼니마다 서로 다른 실제 식당, note는 한 줄로 짧게)\n" +
+"- cafes 배열: 6개 이상 — meal이 \"조식 근처\"/\"중식 근처\"/\"석식 근처\" 각각 2개 이상\n" +
+"- shops 배열: 4~5개 (쇼핑몰/시장/상점가 같은 \"장소\" 단위)\n" +
+"- souvenirs 배열: 8~10개 (그 지역 대표 \"기념품 품목\" 단위 — 과자/특산품/공예품 등 구체적 제품명, note에는 어디서 살 수 있는지 짧게, img에는 영문 검색용 키워드)\n" +
+"- spots 배열: \"관광\" 타입 9~10개 + \"휴양\" 타입 9~10개, " + typeNote + " 일정에 반영 (note는 한 줄로 짧게)\n" +
+"- " + daysLabel + ", " + peopleNum + "인 가족, 총경비 " + Math.round(maxWon/10000) + "만원 이하(목표 " + Math.round(goalWon/10000) + "만원, 항공권 포함)\n" +
+"- itinerary는 호텔에서 먼 곳→가까운 곳 순으로 " + totalDays + "일치 (DAY 1 ~ DAY " + totalDays + "), 시간대별로 간결하게 작성 (각 stop의 label은 한 줄, 너무 길게 쓰지 말기)\n" +
+"- 할루시네이션 없이 실제 존재하는 장소·상호만 사용하고, 가격은 합리적 실제 범위로 표기. 모든 note 필드는 15자 이내로 짧게 써서 응답 길이를 줄여\n\n" +
+"위 개수 조건을 절대 줄이지 말고, 모자라면 같은 지역의 다른 실제 상호를 더 찾아서 반드시 개수를 채워.\n\n" +
+'반드시 아래 JSON 형식만 출력해(설명, 코드블럭, 다른 텍스트 금지):\n' +
+'{ "meta": {"destination":"", "country":"", "dates":"' + daysLabel + '", "travelers":"' + peopleNum + '인 (' + opt.type + ')", "budgetGoal":' + goalWon + ', "budgetMax":' + maxWon + ', "status":""}, "flights": [{"name":"","price":"","note":"","link":""}], "stays": [{"tier":"가성비|보통|럭셔리","name":"","price":"","note":"","link":""}], "cars": [{"name":"","price":"","note":"","link":""}], "spots": [{"type":"관광|휴양","name":"","note":"","dist":"","link":""}], "food": [{"meal":"조식|중식|석식","name":"","note":"","link":""}], "cafes": [{"meal":"조식 근처|중식 근처|석식 근처","name":"","note":"","link":""}], "shops": [{"name":"","note":"","link":""}], "souvenirs": [{"name":"","note":"","img":""}], "itinerary": [{"day":"DAY 1","sub":"","stops":[{"time":"","label":"","kind":"","dist":""}]}] }';
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+async function generateTripDirectly(destination, apiKey, opt) {
+  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(apiKey);
+  var systemPrompt = buildSystemPrompt(opt);
+  var res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ role: "user", parts: [{ text: systemPrompt + "\n\n여행지: " + destination }] }],
+      tools: [{ googleSearch: {} }],
+      generationConfig: { maxOutputTokens: 30000 },
+    }),
+  });
+  if (!res.ok) {
+    var errText = await res.text();
+    throw new Error("API 오류 (" + res.status + ") — 키를 확인해 주세요. " + errText.slice(0, 150));
+  }
+  var data = await res.json();
+  var parts = (data.candidates && data.candidates[0] && data.candidates[0].content.parts) || [];
+  var text = parts.map(function (p) { return p.text || ""; }).join("\n");
+  var clean = text.replace(/```json|```/g, "").trim();
+  var s = clean.indexOf("{"), e = clean.lastIndexOf("}");
+  if (s === -1 || e === -1) throw new Error("응답에서 JSON을 찾지 못했습니다.");
+  var jsonStr = clean.slice(s, e + 1);
+  // Gemini가 문자열 값 안에 실제 줄바꿈/탭 같은 제어문자를 그대로 넣는 경우가 있어 JSON.parse가 깨짐 → 제거 후 재시도
+  try {
+    return JSON.parse(jsonStr);
+  } catch (err) {
+    var sanitized = jsonStr.replace(/[\u0000-\u001F]+/g, " ");
+    try {
+      return JSON.parse(sanitized);
+    } catch (err2) {
+      throw new Error("응답 JSON 파싱에 실패했습니다 (" + err2.message + "). 다시 시도해 주세요.");
+    }
+  }
+}
+
+async function kvCreateBucket() {
+  var res = await fetch("https://kvdb.io/", { method: "POST" });
+  if (!res.ok) throw new Error("공유 코드 생성 실패");
+  return (await res.text()).trim();
+}
+async function kvSet(bucket, key, valueObj) {
+  await fetch("https://kvdb.io/" + bucket + "/" + encodeURIComponent(key), { method: "POST", body: JSON.stringify(valueObj) });
+}
+async function kvGet(bucket, key) {
+  var res = await fetch("https://kvdb.io/" + bucket + "/" + encodeURIComponent(key));
+  if (!res.ok) return null;
+  var text = await res.text();
+  try { return JSON.parse(text); } catch (e) { return null; }
+}
+
+function calcBudgetBreakdown(goalWon) {
+  var m = Math.round(goalWon / 10000);
+  return [
+    { label: "항공권", pct: 28, amount: Math.round(m * 0.28), color: "#E8642C" },
+    { label: "숙소", pct: 32, amount: Math.round(m * 0.32), color: "#3C8C7C" },
+    { label: "렌트카", pct: 10, amount: Math.round(m * 0.10), color: "#8FA3A6" },
+    { label: "식비·카페", pct: 22, amount: Math.round(m * 0.22), color: "#C1632E" },
+    { label: "쇼핑·기타", pct: 8, amount: Math.round(m * 0.08), color: "#16323A" },
+  ];
+}
+
+function loadPptxLibIfNeeded() {
+  return new Promise(function (resolve, reject) {
+    if (typeof PptxGenJS !== "undefined") return resolve();
+    var script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js";
+    script.onload = function () { resolve(); };
+    script.onerror = function () { reject(new Error("PPT 라이브러리 로드 실패 (네트워크/CDN 차단 가능성)")); };
+    document.head.appendChild(script);
+  });
+}
+
+async function exportTripToPPTX(t) {
+  try {
+    await loadPptxLibIfNeeded();
+  } catch (e) {
+    alert(e.message + " — 인터넷 연결을 확인하고 다시 시도해 주세요.");
+    return;
+  }
+  var NAVY = "16323A", SAND = "F4ECDD", CORAL = "E8642C", TEAL = "3C8C7C", MUTED = "8FA3A6", WHITE = "FFFFFF";
+  var pptx = new PptxGenJS();
+  pptx.defineLayout({ name: "WIDE", width: 13.33, height: 7.5 });
+  pptx.layout = "WIDE";
+
+  function addFooter(slide, pageLabel) {
+    slide.addText(t.meta.destination + " 가족여행", { x: 0.5, y: 7.1, w: 6, h: 0.3, fontSize: 9, color: MUTED, fontFace: "Arial" });
+    slide.addText(pageLabel || "", { x: 11.5, y: 7.1, w: 1.5, h: 0.3, fontSize: 9, color: MUTED, align: "right", fontFace: "Arial" });
+  }
+
+  // 1) 표지
+  var cover = pptx.addSlide();
+  cover.background = { color: NAVY };
+  cover.addShape("rect", { x: 0, y: 0, w: 0.18, h: 7.5, fill: { color: CORAL } });
+  cover.addText("FAMILY TRIP PLAN", { x: 0.9, y: 1.5, w: 10, h: 0.5, fontSize: 14, color: TEAL, charSpacing: 3, fontFace: "Arial" });
+  cover.addText(t.meta.destination, { x: 0.9, y: 2.0, w: 11, h: 1.4, fontSize: 48, bold: true, color: SAND, fontFace: "Georgia" });
+  cover.addText(t.meta.dates + "   ·   " + t.meta.travelers, { x: 0.9, y: 3.5, w: 11, h: 0.6, fontSize: 16, color: "CFE6DF", fontFace: "Arial" });
+  cover.addText("예산 목표 " + Math.round(t.meta.budgetGoal / 10000).toLocaleString() + "만원  (상한 " + Math.round(t.meta.budgetMax / 10000).toLocaleString() + "만원)",
+    { x: 0.9, y: 4.1, w: 11, h: 0.5, fontSize: 13, color: CORAL, fontFace: "Arial" });
+  addFooter(cover, "01");
+
+  // 2) 예산 분배 (도넛/막대 대신 컬러 바)
+  var b = pptx.addSlide();
+  b.background = { color: SAND };
+  b.addText("예산 분배 계획", { x: 0.6, y: 0.4, w: 10, h: 0.6, fontSize: 26, bold: true, color: NAVY, fontFace: "Georgia" });
+  var breakdown = calcBudgetBreakdown(t.meta.budgetGoal);
+  var barX = 0.6, barY = 1.6, barW = 11.5, barH = 0.45;
+  breakdown.forEach(function (item) {
+    var w = barW * (item.pct / 100);
+    b.addShape("rect", { x: barX, y: barY, w: w, h: barH, fill: { color: item.color.replace("#", "") } });
+    barX += w;
+  });
+  var legendY = 2.5;
+  breakdown.forEach(function (item, i) {
+    var col = i % 3, rowY = legendY + Math.floor(i / 3) * 1.0;
+    var x = 0.6 + col * 4.0;
+    b.addShape("ellipse", { x: x, y: rowY + 0.05, w: 0.18, h: 0.18, fill: { color: item.color.replace("#", "") } });
+    b.addText(item.label, { x: x + 0.3, y: rowY - 0.08, w: 3, h: 0.3, fontSize: 12, color: MUTED, fontFace: "Arial" });
+    b.addText(item.amount.toLocaleString() + "만원", { x: x + 0.3, y: rowY + 0.2, w: 3, h: 0.35, fontSize: 16, bold: true, color: NAVY, fontFace: "Arial" });
+  });
+  addFooter(b, "02");
+
+  function addListSlide(title, rows, pageLabel) {
+    var s = pptx.addSlide();
+    s.background = { color: SAND };
+    s.addText(title, { x: 0.6, y: 0.4, w: 11, h: 0.6, fontSize: 26, bold: true, color: NAVY, fontFace: "Georgia" });
+    s.addShape("line", { x: 0.6, y: 1.05, w: 12.1, h: 0, line: { color: CORAL, width: 2 } });
+    var y = 1.35;
+    rows.slice(0, 7).forEach(function (r) {
+      s.addText(r.title, { x: 0.6, y: y, w: 8.6, h: 0.35, fontSize: 14, bold: true, color: NAVY, fontFace: "Arial" });
+      if (r.right) s.addText(r.right, { x: 9.4, y: y, w: 3.3, h: 0.35, fontSize: 13, bold: true, color: CORAL, align: "right", fontFace: "Arial" });
+      s.addText(r.note || "", { x: 0.6, y: y + 0.33, w: 12, h: 0.32, fontSize: 11, color: MUTED, fontFace: "Arial" });
+      y += 0.78;
+    });
+    addFooter(s, pageLabel);
+    return s;
+  }
+
+  addListSlide("항공권 추천", t.flights.map(function (f) { return { title: f.name, right: f.price, note: f.note }; }), "03");
+  addListSlide("숙소 추천", t.stays.map(function (s) { return { title: "[" + s.tier + "] " + s.name, right: s.price, note: s.note }; }), "04");
+  addListSlide("관광지 & 휴양지", t.spots.map(function (s) { return { title: "[" + s.type + "] " + s.name, right: s.dist, note: s.note }; }), "05");
+  addListSlide("식사", t.food.map(function (f) { return { title: "[" + f.meal + "] " + f.name, note: f.note }; }), "06");
+  addListSlide("카페", t.cafes.map(function (c) { return { title: "[" + c.meal + "] " + c.name, note: c.note }; }), "07");
+  addListSlide("쇼핑 / 기념품", t.shops.map(function (s) { return { title: s.name, note: s.note }; }), "08");
+
+  // 일정표 (Day별)
+  t.itinerary.forEach(function (d, di) {
+    var s = pptx.addSlide();
+    s.background = { color: SAND };
+    s.addText(d.day, { x: 0.6, y: 0.4, w: 6, h: 0.5, fontSize: 24, bold: true, color: NAVY, fontFace: "Georgia" });
+    s.addText(d.sub, { x: 0.6, y: 0.95, w: 11, h: 0.35, fontSize: 12, color: MUTED, fontFace: "Arial" });
+    s.addShape("line", { x: 0.6, y: 1.35, w: 12.1, h: 0, line: { color: CORAL, width: 2 } });
+    var y = 1.6;
+    d.stops.forEach(function (st) {
+      s.addShape("ellipse", { x: 0.6, y: y + 0.06, w: 0.14, h: 0.14, fill: { color: CORAL.replace("#", "") } });
+      s.addText(st.time, { x: 0.95, y: y, w: 0.9, h: 0.32, fontSize: 12, bold: true, color: TEAL, fontFace: "Arial" });
+      s.addText(st.label, { x: 1.9, y: y, w: 9.0, h: 0.32, fontSize: 13, color: NAVY, fontFace: "Arial" });
+      if (st.dist) s.addText(st.dist, { x: 11.0, y: y, w: 1.7, h: 0.32, fontSize: 10, color: MUTED, align: "right", fontFace: "Arial" });
+      y += 0.55;
+    });
+    addFooter(s, String(9 + di).padStart(2, "0"));
+  });
+
+  pptx.writeFile({ fileName: t.meta.destination.replace(/[\\/:*?"<>|]/g, "") + "_가족여행계획.pptx" });
+}
+
+
+// ---- 무료/키없이 이미지 찾기 (위키백과 API, CORS 허용) ----
+async function fetchSouvenirImage(query) {
+  try {
+    var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail&pithumbsize=320&generator=search&gsrsearch=" + encodeURIComponent(query) + "&gsrlimit=1";
+    var res = await fetch(url);
+    if (!res.ok) return null;
+    var data = await res.json();
+    var pages = data.query && data.query.pages;
+    if (!pages) return null;
+    var first = Object.values(pages)[0];
+    return (first && first.thumbnail && first.thumbnail.source) || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function printTripAsPDF() {
+  document.body.classList.add("print-mode");
+  setTimeout(function () {
+    window.print();
+    setTimeout(function () { document.body.classList.remove("print-mode"); }, 500);
+  }, 50);
+}
+
+// ---------------- 상태 ----------------
+var state = {
+  destInput: "", activeTab: "flight", error: "", genLoading: false,
+  apiKey: localStorage.getItem("gemini_api_key") || "",
+  showKeyBox: false,
+  trip: null,
+  savedTrips: [], // [{destination, country}]
+  openFolders: {},
+  familyCode: localStorage.getItem("family_code") || "",
+  showShare: false, sharedList: [], shareStatus: "", syncOn: false,
+  spotsSubTab: "관광",
+  foodSubTab: "조식",
+  souvenirOpen: {},
+  souvenirImg: {},
+  opt: {
+    startDate: "",
+    endDate: "",
+    days: "3박4일",
+    people: 4,
+    type: "혼합형",
+    budgetGoal: 220,
+    budgetMax: 300,
+    departure: "인천",
+  },
+};
+
+function calcDaysLabel(startStr, endStr) {
+  if (!startStr || !endStr) return "3박4일";
+  var s = new Date(startStr), e = new Date(endStr);
+  var nights = Math.round((e - s) / (1000 * 60 * 60 * 24));
+  if (nights <= 0) return "3박4일";
+  return nights + "박" + (nights + 1) + "일";
+}
+
+function loadInitial() {
+  try {
+    var listRaw = localStorage.getItem("trip_list");
+    var parsed = listRaw ? JSON.parse(listRaw) : null;
+    if (!parsed || !parsed.length) {
+      state.savedTrips = [{ destination: "삿포로 (홋카이도)", country: "일본" }];
+    } else if (typeof parsed[0] === "string") {
+      // 이전 버전(문자열 배열) 마이그레이션: 각 트립의 country를 저장된 데이터에서 찾아옴
+      state.savedTrips = parsed.map(function (d) {
+        var raw = localStorage.getItem("trip:" + d);
+        var country = "기타";
+        try { country = raw ? (JSON.parse(raw).meta.country || "기타") : "기타"; } catch (e) {}
+        return { destination: d, country: country };
+      });
+    } else {
+      state.savedTrips = parsed;
+    }
+  } catch (e) {
+    state.savedTrips = [{ destination: "삿포로 (홋카이도)", country: "일본" }];
+  }
+  state.savedTrips.forEach(function (t) { state.openFolders[t.country] = true; });
+  // 기본(삿포로) 데이터는 항상 최신 버전으로 덮어써서, 이전에 저장된 캐시 데이터가 남아있지 않게 한다.
+  localStorage.setItem("trip:삿포로 (홋카이도)", JSON.stringify(DEFAULT_TRIP));
+  var cur = localStorage.getItem("trip:삿포로 (홋카이도)");
+  state.trip = cur ? JSON.parse(cur) : DEFAULT_TRIP;
+}
+
+function persistTrip(destination, data) {
+  localStorage.setItem("trip:" + destination, JSON.stringify(data));
+  var country = (data.meta && data.meta.country) || "기타";
+  var next = [{ destination: destination, country: country }].concat(
+    state.savedTrips.filter(function (t) { return t.destination !== destination; })
+  );
+  state.savedTrips = next;
+  state.openFolders[country] = true;
+  localStorage.setItem("trip_list", JSON.stringify(next));
+}
+
+function deleteTrip(destination) {
+  localStorage.removeItem("trip:" + destination);
+  state.savedTrips = state.savedTrips.filter(function (t) { return t.destination !== destination; });
+  localStorage.setItem("trip_list", JSON.stringify(state.savedTrips));
+  if (state.trip && state.trip.meta.destination === destination) {
+    var fallback = state.savedTrips[0];
+    if (fallback) {
+      var raw = localStorage.getItem("trip:" + fallback.destination);
+      state.trip = raw ? JSON.parse(raw) : DEFAULT_TRIP;
+    } else {
+      state.trip = DEFAULT_TRIP;
+    }
+  }
+  render();
+}
+
+function groupTripsByCountry() {
+  var groups = {};
+  state.savedTrips.forEach(function (t) {
+    var c = t.country || "기타";
+    if (!groups[c]) groups[c] = [];
+    groups[c].push(t);
+  });
+  return groups;
+}
+
+function loadTrip(destination) {
+  var raw = localStorage.getItem("trip:" + destination);
+  if (raw) { state.trip = JSON.parse(raw); state.activeTab = "flight"; render(); }
+}
+
+var pollId = null;
+function startPolling() {
+  if (pollId) clearInterval(pollId);
+  fetchShared();
+  pollId = setInterval(fetchShared, 5000);
+}
+async function fetchShared() {
+  var code = state.familyCode.trim();
+  if (!code) return;
+  var list = await kvGet(code, "list");
+  if (list) { state.sharedList = list; render(); }
+}
+
+async function handleGenerate() {
+  var destination = state.destInput.trim();
+  if (!destination) return;
+  if (!state.apiKey) { state.showKeyBox = true; state.error = "먼저 Gemini API 키를 입력해 주세요 (aistudio.google.com/apikey에서 무료 발급)."; render(); return; }
+  state.genLoading = true; state.error = ""; render();
+  var lastErr = null;
+  for (var attempt = 1; attempt <= 3; attempt++) {
+    try {
+      state.error = attempt > 1 ? ("재시도 중... (" + attempt + "/3)") : "";
+      if (attempt > 1) render();
+      var data = await generateTripDirectly(destination, state.apiKey, state.opt);
+      state.trip = data;
+      persistTrip(destination, data);
+      state.activeTab = "flight";
+      state.destInput = "";
+      state.error = "";
+      lastErr = null;
+      break;
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  if (lastErr) state.error = "자동 생성에 실패했어요(3회 시도): " + lastErr.message;
+  state.genLoading = false; render();
+}
+
+async function handleCreateFamilyCode() {
+  state.shareStatus = "코드 생성 중..."; render();
+  try {
+    var code = await kvCreateBucket();
+    state.familyCode = code;
+    localStorage.setItem("family_code", code);
+    state.syncOn = true;
+    state.shareStatus = '새 가족 코드: "' + code + '" — 이 코드를 가족에게 보내주세요.';
+    startPolling();
+  } catch (e) {
+    state.shareStatus = "코드 생성 실패: " + e.message;
+  }
+  render();
+}
+
+function handleConnectFamilyCode() {
+  var code = state.familyCode.trim();
+  if (!code) { state.shareStatus = "가족에게 받은 코드를 입력해 주세요."; render(); return; }
+  localStorage.setItem("family_code", code);
+  state.syncOn = true;
+  state.shareStatus = '"' + code + '" 코드로 연결했어요. 5초마다 자동 동기화돼요.';
+  startPolling();
+  render();
+}
+
+async function handleShareUpload() {
+  var code = state.familyCode.trim();
+  if (!code) { state.shareStatus = "먼저 코드를 만들거나 입력해 주세요."; render(); return; }
+  state.shareStatus = "공유 중..."; render();
+  try {
+    var list = (await kvGet(code, "list")) || [];
+    var dest = state.trip.meta.destination;
+    var next = [dest].concat(list.filter(function (d) { return d !== dest; }));
+    await kvSet(code, "list", next);
+    await kvSet(code, "trip:" + dest, state.trip);
+    state.shareStatus = '"' + dest + '" 일정을 공유했어요.';
+  } catch (e) {
+    state.shareStatus = "공유 실패: " + e.message;
+  }
+  render();
+}
+
+async function loadSharedTrip(destination) {
+  var code = state.familyCode.trim();
+  var data = await kvGet(code, "trip:" + destination);
+  if (data) { state.trip = data; persistTrip(destination, data); state.activeTab = "flight"; }
+  else { state.error = "공유된 일정을 불러오지 못했어요."; }
+  render();
+}
+
+// ---------------- 렌더링 ----------------
+function renderFlight(t) {
+  return '<div class="section"><div class="section-title">항공권</div><div class="section-body">' +
+    t.flights.map(function (f) {
+      return '<div class="card-row"><div><div class="card-name">' + esc(f.name) + '</div><div class="card-note">' + esc(f.note) + '</div></div>' +
+        '<div><div class="card-price">' + esc(f.price) + '</div><a class="card-link" href="' + esc(f.link) + '" target="_blank">예약사이트</a></div></div>';
+    }).join("") + '</div></div>';
+}
+function renderStay(t) {
+  return '<div class="section"><div class="section-title">숙소</div><div class="section-body">' +
+    t.stays.map(function (s) {
+      return '<div class="card-row"><div style="display:flex;align-items:center;gap:10px;"><span class="pill">' + esc(s.tier) + '</span><div><div class="card-name">' + esc(s.name) + '</div><div class="card-note">' + esc(s.note) + '</div></div></div>' +
+        '<div><div class="card-price" style="color:var(--navy)">' + esc(s.price) + '</div><a class="card-link" href="' + esc(s.link) + '" target="_blank">예약사이트</a></div></div>';
+    }).join("") + '</div></div>';
+}
+function renderSpots(t) {
+  var filtered = t.spots.filter(function (s) { return s.type === state.spotsSubTab; });
+  return '<div class="section"><div class="section-title">관광지 & 휴양지</div><div class="section-body">' +
+    '<div class="subtabs">' +
+      ['관광', '휴양'].map(function (type) {
+        return '<button class="subtab spots-subtab ' + (state.spotsSubTab === type ? "active" : "") + '" data-type="' + type + '">' + type + ' (' + t.spots.filter(function (s) { return s.type === type; }).length + ')</button>';
+      }).join("") +
+    '</div>' +
+    '<div class="grid2 cols2">' +
+    filtered.map(function (s) {
+      return '<div class="spot-card"><div class="spot-top"><span class="pill">' + esc(s.type) + '</span><span class="stop-dist">' + esc(s.dist || "") + '</span></div>' +
+        '<div class="card-name" style="margin-top:8px;">' + esc(s.name) + '</div><div class="card-note">' + esc(s.note) + '</div></div>';
+    }).join("") + '</div></div></div>';
+}
+function renderFood(t) {
+  var filtered = t.food.filter(function (f) { return f.meal === state.foodSubTab; });
+  return '<div class="section"><div class="section-title">식사</div><div class="section-body">' +
+    '<div class="subtabs">' +
+      ['조식', '중식', '석식'].map(function (meal) {
+        return '<button class="subtab food-subtab ' + (state.foodSubTab === meal ? "active" : "") + '" data-meal="' + meal + '">' + meal + ' (' + t.food.filter(function (f) { return f.meal === meal; }).length + ')</button>';
+      }).join("") +
+    '</div>' +
+    filtered.map(function (f) {
+      return '<div class="card-row"><div><div class="card-name">' + esc(f.name) + '</div><div class="card-note">' + esc(f.note) + '</div></div>' +
+        '<a class="card-link" href="' + esc(f.link) + '" target="_blank">정보</a></div>';
+    }).join("") + '</div></div>';
+}
+function renderCafe(t) {
+  return '<div class="section"><div class="section-title">카페</div><div class="section-body">' +
+    t.cafes.map(function (c) {
+      return '<div class="card-row"><div style="display:flex;align-items:center;gap:10px;"><span class="pill">' + esc(c.meal) + '</span><div><div class="card-name">' + esc(c.name) + '</div><div class="card-note">' + esc(c.note) + '</div></div></div>' +
+        '<a class="card-link" href="' + esc(c.link) + '" target="_blank">정보</a></div>';
+    }).join("") + '</div></div>';
+}
+function renderShop(t) {
+  return '<div class="section"><div class="section-title">쇼핑몰</div><div class="section-body"><div class="grid2 cols2">' +
+    t.shops.map(function (s) {
+      return '<div class="spot-card"><div class="card-name">' + esc(s.name) + '</div><div class="card-note">' + esc(s.note) + '</div><a class="card-link" style="text-align:left" href="' + esc(s.link) + '" target="_blank">예약사이트</a></div>';
+    }).join("") + '</div></div></div>';
+}
+function renderSouvenir(t) {
+  var items = t.souvenirs || [];
+  return '<div class="section"><div class="section-title">🎁 추천 기념품 (' + items.length + '+)</div><div class="section-body">' +
+    '<div class="souvenir-grid">' +
+    items.map(function (s, i) {
+      var open = !!state.souvenirOpen[i];
+      var imgState = state.souvenirImg[i];
+      var inner = '';
+      if (open) {
+        if (imgState === "loading") {
+          inner = '<div class="souvenir-detail"><div class="souvenir-loading">이미지 불러오는 중...</div></div>';
+        } else if (imgState && imgState.url) {
+          inner = '<div class="souvenir-detail"><img src="' + esc(imgState.url) + '" class="souvenir-img" onerror="this.style.display=\'none\'"/><div class="card-note" style="margin-top:8px;">' + esc(s.note) + '</div></div>';
+        } else {
+          inner = '<div class="souvenir-detail"><div class="card-note">이미지를 찾지 못했어요. <a href="https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(s.name) + '" target="_blank" style="color:var(--teal);">구글 이미지에서 보기</a></div><div class="card-note" style="margin-top:6px;">' + esc(s.note) + '</div></div>';
+        }
+      }
+      return '<button class="souvenir-chip souvenir-toggle" data-idx="' + i + '">' + esc(s.name) + '</button>' + (open ? inner : "");
+    }).join("") +
+    '</div></div></div>';
+}
+function renderItinerary(t) {
+  return '<div class="section"><div class="section-title">일정표</div><div class="section-body">' +
+    t.itinerary.map(function (d) {
+      return '<div class="day-block"><span class="day-title">' + esc(d.day) + '</span><span class="day-sub">' + esc(d.sub) + '</span>' +
+        '<div class="timeline">' + d.stops.map(function (s) {
+          return '<div class="stop"><div class="stop-row"><span class="stop-time">' + esc(s.time) + '</span><span>' + esc(s.label) + '</span><span class="pill">' + esc(s.kind) + '</span>' +
+            (s.dist ? '<span class="stop-dist">' + esc(s.dist) + '</span>' : "") + '</div></div>';
+        }).join("") + '</div></div>';
+    }).join("") + '</div></div>';
+}
+function renderCar(t) {
+  var cars = t.cars || [];
+  return '<div class="section"><div class="section-title">🚗 렌트카 추천</div><div class="section-body">' +
+    cars.map(function (c) {
+      return '<div class="card-row"><div><div class="card-name">' + esc(c.name) + '</div><div class="card-note">' + esc(c.note) + '</div></div>' +
+        '<div><div class="card-price">' + esc(c.price) + '</div><a class="card-link" href="' + esc(c.link) + '" target="_blank">예약하기 →</a></div></div>';
+    }).join("") + '</div></div>';
+}
+
+function renderTabContent() {
+  var t = state.trip;
+  switch (state.activeTab) {
+    case "flight": return renderFlight(t);
+    case "stay": return renderStay(t);
+    case "spots": return renderSpots(t);
+    case "food": return renderFood(t);
+    case "cafe": return renderCafe(t);
+    case "shop": return renderShop(t);
+    case "souvenir": return renderSouvenir(t);
+    case "itinerary": return renderItinerary(t);
+    case "car": return renderCar(t);
+    default: return "";
+  }
+}
+
+function renderPrintable() {
+  var t = state.trip;
+  var html = '<div class="print-page"><h1 style="font-size:30px;">' + esc(t.meta.destination) + '</h1>' +
+    '<p>' + esc(t.meta.dates) + ' · ' + esc(t.meta.travelers) + '</p></div>';
+  t.itinerary.forEach(function (d) {
+    html += '<div class="print-page"><h2>' + esc(d.day) + '</h2>' +
+      d.stops.map(function (s) { return '<p>' + esc(s.time) + ' ' + esc(s.label) + '</p>'; }).join("") + '</div>';
+  });
+  return html;
+}
+
+function render() {
+  var t = state.trip;
+  var root = document.getElementById("root");
+  root.innerHTML =
+    '<div class="app-interactive">' +
+      '<div class="header"><div class="wrap">' +
+        '<div class="eyebrow">✈️ Travel Planner</div>' +
+        '<h1>파일 하나로 끝.<br/>내 키로 조사하고, 가족과 공유.</h1>' +
+        '<div class="row">' +
+          '<div class="input-bar"><input id="destInput" placeholder="여행지 입력 (예: 제주도)" value="' + esc(state.destInput) + '" ' + (state.genLoading ? "disabled" : "") + '/>' +
+          '<button class="btn-primary" id="genBtn" ' + (state.genLoading ? "disabled" : "") + '>' + (state.genLoading ? "조사 중..." : "새 여행 만들기") + '</button></div>' +
+          '<button class="btn-key" id="keyToggle">' + (state.apiKey ? "🔑 키 등록됨" : "API 키 설정") + '</button>' +
+        '</div>' +
+
+        '<div class="opt-panel">' +
+          '<div class="opt-group"><div class="opt-label">📅 여행일수 (날짜 선택)</div><div class="opt-row">' +
+            '<input type="date" id="optStartDate" class="opt-input" value="' + esc(state.opt.startDate) + '"/>' +
+            '<span style="color:var(--muted);align-self:center;">~</span>' +
+            '<input type="date" id="optEndDate" class="opt-input" value="' + esc(state.opt.endDate) + '"/>' +
+            '<span class="opt-computed">' + calcDaysLabel(state.opt.startDate, state.opt.endDate) + '</span>' +
+          '</div></div>' +
+          '<div class="opt-group"><div class="opt-label">👥 인원 (직접입력)</div><div class="opt-row">' +
+            '<input type="number" id="optPeople" class="opt-input" style="width:90px;" min="1" max="20" value="' + esc(state.opt.people) + '"/>' +
+            '<span style="color:var(--muted);align-self:center;">명</span>' +
+          '</div></div>' +
+          '<div class="opt-group"><div class="opt-label">☀️ 여행유형</div><div class="opt-row">' +
+            ["관광형", "휴양형", "혼합형"].map(function (v) {
+              return '<button class="opt-btn opt-type ' + (state.opt.type === v ? "active" : "") + '" data-val="' + v + '">' + v + '</button>';
+            }).join("") + '</div></div>' +
+          '<div class="opt-group"><div class="opt-label">💰 예산 (직접입력, 만원)</div><div class="opt-row">' +
+            '<span style="color:var(--muted);align-self:center;font-size:12px;">목표</span>' +
+            '<input type="number" id="optBudgetGoal" class="opt-input" style="width:90px;" min="0" step="10" value="' + esc(state.opt.budgetGoal) + '"/>' +
+            '<span style="color:var(--muted);align-self:center;font-size:12px;">상한</span>' +
+            '<input type="number" id="optBudgetMax" class="opt-input" style="width:90px;" min="0" step="10" value="' + esc(state.opt.budgetMax) + '"/>' +
+            '<span style="color:var(--muted);align-self:center;">만원</span>' +
+          '</div></div>' +
+          '<div class="opt-group"><div class="opt-label">✈️ 출발지역</div><div class="opt-row">' +
+            ["인천", "김포", "부산", "대구"].map(function (v) {
+              return '<button class="opt-btn opt-departure ' + (state.opt.departure === v ? "active" : "") + '" data-val="' + v + '">' + v + '</button>';
+            }).join("") + '</div></div>' +
+        '</div>' +
+        (state.showKeyBox ?
+          '<div class="keybox"><div style="color:#cfe6df;margin-bottom:8px;">aistudio.google.com/apikey 에서 발급한 본인 Gemini API 키를 입력하세요(무료). 이 키는 이 브라우저(localStorage)에만 저장되고, 서버 없이 브라우저에서 Gemini API로 바로 전송됩니다.</div>' +
+          '<input id="apiKeyInput" type="password" placeholder="AIza..." value="' + esc(state.apiKey) + '"/></div>' : "") +
+        (state.error ? '<div class="error-text">' + esc(state.error) + '</div>' : "") +
+        '<div class="row" style="margin-top:14px;align-items:flex-start;">' +
+          '<span style="color:var(--muted);font-size:12px;padding-top:8px;">불러오기:</span>' +
+          '<div style="flex:1;">' + Object.keys(groupTripsByCountry()).map(function (country) {
+            var trips = groupTripsByCountry()[country];
+            var open = !!state.openFolders[country];
+            return '<div class="folder">' +
+              '<button class="folder-head folder-toggle" data-country="' + esc(country) + '">' +
+                '<span>' + (open ? "📂" : "📁") + ' ' + esc(country) + '</span><span class="folder-count">' + trips.length + '</span>' +
+              '</button>' +
+              (open ? '<div class="folder-body">' + trips.map(function (t) {
+                return '<span class="chip-wrap"><button class="chip load-trip" data-dest="' + esc(t.destination) + '">' + esc(t.destination) + '</button>' +
+                  '<button class="chip-del delete-trip" data-dest="' + esc(t.destination) + '" title="삭제">✕</button></span>';
+              }).join("") + '</div>' : "") +
+            '</div>';
+          }).join("") + '</div>' +
+        '</div>' +
+        '<div class="row" style="margin-top:10px;justify-content:flex-end;">' +
+          '<button class="chip chip-coral" id="pptxBtn">📊 발표용 PPT 다운로드</button>' +
+          '<button class="chip chip-coral" id="printBtn">인쇄/PDF로 저장</button>' +
+          '<button class="chip" id="shareToggle">' + (state.syncOn ? "🟢 가족 공유 중" : "가족과 공유하기") + '</button>' +
+        '</div>' +
+        (state.showShare ?
+          '<div class="sharebox">' +
+          '<div style="color:#cfe6df;">처음 공유하는 사람은 "코드 만들기" → "공유링크 복사"로 나온 링크를 가족에게 보내주세요. 가족은 그 링크만 열면 자동으로 연결돼서 5초마다 동기화돼요.</div>' +
+          '<div class="flexrow">' +
+            '<input id="familyCodeInput" placeholder="가족 코드" value="' + esc(state.familyCode) + '"/>' +
+            '<button id="createCodeBtn" style="background:var(--navy);">코드 만들기</button>' +
+            '<button id="connectCodeBtn" style="background:var(--teal);">코드로 연결</button>' +
+            '<button id="uploadShareBtn" style="background:var(--coral);">현재 일정 공유</button>' +
+          '</div>' +
+          (state.familyCode ? '<div class="flexrow"><button id="copyLinkBtn" style="background:var(--navy);width:100%;">🔗 공유링크 복사 (이 링크만 보내면 자동 연결됨)</button></div>' : "") +
+          (state.shareStatus ? '<div style="color:#cfe6df;font-size:12px;">' + esc(state.shareStatus) + '</div>' : "") +
+          (state.sharedList.length ? '<div class="row" style="margin-top:8px;"><span style="color:var(--muted);font-size:12px;">가족이 공유한 여행:</span>' +
+            state.sharedList.map(function (d) { return '<button class="chip chip-coral load-shared" data-dest="' + esc(d) + '">' + esc(d) + '</button>'; }).join("") + '</div>' : "") +
+          '<div style="font-size:10px;color:var(--muted);margin-top:8px;">⚠️ kvdb.io라는 무료 익명 공개 저장소를 사용합니다. 민감정보는 넣지 마세요.</div>' +
+          '</div>' : "") +
+      '</div></div>' +
+
+      '<div class="wrap">' +
+        '<div class="meta-card">' +
+          '<div><div class="meta-label">여행지</div>' +
+            '<input class="meta-input" data-meta="destination" value="' + esc(t.meta.destination) + '"/>' +
+            '<input class="meta-input" data-meta="country" value="' + esc(t.meta.country) + '" style="margin-top:4px;"/></div>' +
+          '<div><div class="meta-label">기간</div><input class="meta-input" data-meta="dates" value="' + esc(t.meta.dates) + '"/></div>' +
+          '<div><div class="meta-label">인원</div><input class="meta-input" data-meta="travelers" value="' + esc(t.meta.travelers) + '"/></div>' +
+          '<div><div class="meta-label">예산(목표/상한, 만원)</div><div style="display:flex;gap:6px;align-items:center;">' +
+            '<input class="meta-input" data-meta="budgetGoal" value="' + Math.round(t.meta.budgetGoal/10000) + '" style="width:70px;"/>' +
+            '<span style="font-size:12px;color:var(--muted);">/</span>' +
+            '<input class="meta-input" data-meta="budgetMax" value="' + Math.round(t.meta.budgetMax/10000) + '" style="width:70px;"/>' +
+            '<span style="font-size:12px;color:var(--muted);">만원</span></div></div>' +
+        '</div>' +
+        '<div class="status-text">' + esc(t.meta.status) + '</div>' +
+
+        '<div class="budget-card"><div class="budget-head">📊 예산 분배 (목표 기준 예상치)</div>' +
+          '<div class="budget-bar">' + calcBudgetBreakdown(t.meta.budgetGoal).map(function (b) {
+            return '<div style="width:' + b.pct + '%;background:' + b.color + ';"></div>';
+          }).join("") + '</div>' +
+          '<div class="budget-legend">' + calcBudgetBreakdown(t.meta.budgetGoal).map(function (b) {
+            return '<div class="budget-item"><span class="budget-dot" style="background:' + b.color + ';"></span>' +
+              '<div><div class="budget-label">' + b.label + '</div><div class="budget-amount">' + b.amount.toLocaleString() + '만원</div></div></div>';
+          }).join("") + '</div>' +
+        '</div>' +
+
+        '<div class="tabs">' + CATEGORIES.map(function (c) {
+          return '<button class="tab tab-btn ' + (state.activeTab === c.key ? "active" : "") + '" data-tab="' + c.key + '">' + c.label + '</button>';
+        }).join("") + '</div>' +
+
+        renderTabContent() +
+        '<div class="footer-pad"></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="printable-export wrap">' + renderPrintable() + '</div>';
+
+  attachEvents();
+}
+
+function attachEvents() {
+  var optStartDate = document.getElementById("optStartDate");
+  if (optStartDate) optStartDate.addEventListener("change", function (e) { state.opt.startDate = e.target.value; render(); });
+  var optEndDate = document.getElementById("optEndDate");
+  if (optEndDate) optEndDate.addEventListener("change", function (e) { state.opt.endDate = e.target.value; render(); });
+  var optPeople = document.getElementById("optPeople");
+  if (optPeople) optPeople.addEventListener("change", function (e) {
+    state.opt.people = parseInt(e.target.value, 10) || 4;
+    if (state.trip && state.trip.meta) {
+      state.trip.meta.travelers = state.opt.people + "인 가족";
+    }
+    render();
+  });
+  var optBudgetGoal = document.getElementById("optBudgetGoal");
+  if (optBudgetGoal) optBudgetGoal.addEventListener("change", function (e) { state.opt.budgetGoal = parseInt(e.target.value, 10) || 220; render(); });
+  var optBudgetMax = document.getElementById("optBudgetMax");
+  if (optBudgetMax) optBudgetMax.addEventListener("change", function (e) { state.opt.budgetMax = parseInt(e.target.value, 10) || 300; render(); });
+  document.querySelectorAll(".opt-type").forEach(function (btn) {
+    btn.addEventListener("click", function () { state.opt.type = btn.getAttribute("data-val"); render(); });
+  });
+  document.querySelectorAll(".opt-departure").forEach(function (btn) {
+    btn.addEventListener("click", function () { state.opt.departure = btn.getAttribute("data-val"); render(); });
+  });
+
+  var destInput = document.getElementById("destInput");
+  if (destInput) {
+    destInput.addEventListener("input", function (e) { state.destInput = e.target.value; });
+    destInput.addEventListener("keydown", function (e) { if (e.key === "Enter") handleGenerate(); });
+  }
+  var genBtn = document.getElementById("genBtn");
+  if (genBtn) genBtn.addEventListener("click", handleGenerate);
+
+  var keyToggle = document.getElementById("keyToggle");
+  if (keyToggle) keyToggle.addEventListener("click", function () { state.showKeyBox = !state.showKeyBox; render(); });
+
+  var apiKeyInput = document.getElementById("apiKeyInput");
+  if (apiKeyInput) {
+    apiKeyInput.addEventListener("blur", function (e) {
+      state.apiKey = e.target.value.trim();
+      localStorage.setItem("gemini_api_key", state.apiKey);
+    });
+    apiKeyInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        state.apiKey = e.target.value.trim();
+        localStorage.setItem("gemini_api_key", state.apiKey);
+        state.showKeyBox = false;
+        state.error = "";
+        render();
+      }
+    });
+  }
+
+  document.querySelectorAll(".meta-input").forEach(function (input) {
+    input.addEventListener("change", function (e) {
+      var field = e.target.getAttribute("data-meta");
+      var val = e.target.value;
+      if (field === "budgetGoal" || field === "budgetMax") {
+        var won = (parseInt(val.replace(/[^0-9]/g, ""), 10) || 0) * 10000;
+        state.trip.meta[field] = won;
+        state.opt[field] = Math.round(won / 10000);
+      } else {
+        state.trip.meta[field] = val;
+        if (field === "travelers") {
+          var numMatch = val.match(/\d+/);
+          if (numMatch) state.opt.people = parseInt(numMatch[0], 10);
+        }
+      }
+      persistTrip(state.trip.meta.destination, state.trip);
+      render();
+    });
+  });
+
+  document.querySelectorAll(".load-trip").forEach(function (btn) {
+    btn.addEventListener("click", function () { loadTrip(btn.getAttribute("data-dest")); });
+  });
+
+  document.querySelectorAll(".delete-trip").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var dest = btn.getAttribute("data-dest");
+      if (confirm('"' + dest + '" 일정을 삭제할까요? 이 기기에서만 삭제되고 되돌릴 수 없어요.')) {
+        deleteTrip(dest);
+      }
+    });
+  });
+
+  document.querySelectorAll(".folder-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var country = btn.getAttribute("data-country");
+      state.openFolders[country] = !state.openFolders[country];
+      render();
+    });
+  });
+
+  var printBtn = document.getElementById("printBtn");
+  if (printBtn) printBtn.addEventListener("click", printTripAsPDF);
+
+  var pptxBtn = document.getElementById("pptxBtn");
+  if (pptxBtn) pptxBtn.addEventListener("click", function () { exportTripToPPTX(state.trip); });
+
+  var shareToggle = document.getElementById("shareToggle");
+  if (shareToggle) shareToggle.addEventListener("click", function () { state.showShare = !state.showShare; render(); });
+
+  var familyCodeInput = document.getElementById("familyCodeInput");
+  if (familyCodeInput) familyCodeInput.addEventListener("input", function (e) { state.familyCode = e.target.value; });
+
+  var createCodeBtn = document.getElementById("createCodeBtn");
+  if (createCodeBtn) createCodeBtn.addEventListener("click", handleCreateFamilyCode);
+  var connectCodeBtn = document.getElementById("connectCodeBtn");
+  if (connectCodeBtn) connectCodeBtn.addEventListener("click", handleConnectFamilyCode);
+  var uploadShareBtn = document.getElementById("uploadShareBtn");
+  if (uploadShareBtn) uploadShareBtn.addEventListener("click", handleShareUpload);
+
+  var copyLinkBtn = document.getElementById("copyLinkBtn");
+  if (copyLinkBtn) copyLinkBtn.addEventListener("click", function () {
+    var link = window.location.origin + window.location.pathname + "?code=" + encodeURIComponent(state.familyCode);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(function () {
+        state.shareStatus = "공유링크를 복사했어요. 카카오톡 등으로 가족에게 보내주세요: " + link;
+        render();
+      }).catch(function () {
+        prompt("아래 링크를 직접 복사해서 보내주세요:", link);
+      });
+    } else {
+      prompt("아래 링크를 직접 복사해서 보내주세요:", link);
+    }
+  });
+
+  document.querySelectorAll(".load-shared").forEach(function (btn) {
+    btn.addEventListener("click", function () { loadSharedTrip(btn.getAttribute("data-dest")); });
+  });
+
+  document.querySelectorAll(".souvenir-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var idx = btn.getAttribute("data-idx");
+      var isOpen = !!state.souvenirOpen[idx];
+      if (isOpen) {
+        state.souvenirOpen[idx] = false;
+        render();
+        return;
+      }
+      state.souvenirOpen[idx] = true;
+      var item = (state.trip.souvenirs || [])[idx];
+      if (item && !state.souvenirImg[idx]) {
+        state.souvenirImg[idx] = "loading";
+        render();
+        fetchSouvenirImage(item.img || item.name).then(function (url) {
+          state.souvenirImg[idx] = { url: url };
+          render();
+        });
+      } else {
+        render();
+      }
+    });
+  });
+
+  document.querySelectorAll(".spots-subtab").forEach(function (btn) {
+    btn.addEventListener("click", function () { state.spotsSubTab = btn.getAttribute("data-type"); render(); });
+  });
+  document.querySelectorAll(".food-subtab").forEach(function (btn) {
+    btn.addEventListener("click", function () { state.foodSubTab = btn.getAttribute("data-meal"); render(); });
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { state.activeTab = btn.getAttribute("data-tab"); render(); });
+  });
+}
+
+// ---------------- 초기화 ----------------
+loadInitial();
+
+// 공유링크(?code=XXXX)로 들어온 경우 자동으로 코드 연결 + 공유 패널 펼치기
+(function () {
+  try {
+    var urlCode = new URLSearchParams(window.location.search).get("code");
+    if (urlCode) {
+      state.familyCode = urlCode.trim();
+      localStorage.setItem("family_code", state.familyCode);
+      state.showShare = true;
+      state.syncOn = true;
+      state.shareStatus = '공유 링크로 "' + state.familyCode + '" 코드에 자동 연결했어요. 5초마다 동기화돼요.';
+    }
+  } catch (e) {}
+})();
+
+render();
+if (state.syncOn) startPolling();
+
+// ---- 서비스워커(오프라인 캐싱) Blob URL로 등록 (별도 파일 없이 단일파일 유지) ----
+if ("serviceWorker" in navigator) {
+  try {
+    var swSource = [
+      'self.addEventListener("install", function(e){ e.waitUntil(caches.open("tp-v1").then(function(c){ return c.add("/"); })); });',
+      'self.addEventListener("fetch", function(e){',
+      '  if (e.request.method !== "GET") return;', // POST 등은 절대 가로채지 않음 (Gemini/kvdb 호출 보호)
+      '  if (new URL(e.request.url).origin !== self.location.origin) return;', // 같은 도메인만 캐싱 처리
+      '  e.respondWith(caches.match(e.request).then(function(cached){',
+      '    return cached || fetch(e.request).catch(function(){ return cached; });',
+      '  }));',
+      '});'
+    ].join("\n");
+    var blob = new Blob([swSource], { type: "text/javascript" });
+    var swUrl = URL.createObjectURL(blob);
+    window.addEventListener("load", function () {
+      // 이전에 등록된(외부 API를 가로채던) 서비스워커가 남아있을 수 있어 모두 해제 후 새로 등록
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        regs.forEach(function (r) { r.unregister(); });
+        navigator.serviceWorker.register(swUrl).catch(function () {});
+      }).catch(function () {
+        navigator.serviceWorker.register(swUrl).catch(function () {});
+      });
+    });
+  } catch (e) {}
+}
+
+})();
+</script>
+</body>
+</html>
