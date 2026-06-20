@@ -523,17 +523,9 @@ function renderDateSelects(prefix, isoValue) {
     var parts = isoValue.split("-");
     if (parts.length === 3) { y = parseInt(parts[0], 10); m = parseInt(parts[1], 10); d = parseInt(parts[2], 10); }
   }
-  var years = [];
-  for (var yy = now.getFullYear(); yy <= now.getFullYear() + 2; yy++) years.push(yy);
-  var daysInMonth = new Date(y, m, 0).getDate();
-  var yearOpts = years.map(function (yv) { return '<option value="' + yv + '"' + (yv === y ? " selected" : "") + '>' + yv + '년</option>'; }).join("");
-  var monthOpts = "";
-  for (var mm = 1; mm <= 12; mm++) monthOpts += '<option value="' + mm + '"' + (mm === m ? " selected" : "") + '>' + mm + '월</option>';
-  var dayOpts = "";
-  for (var dd = 1; dd <= daysInMonth; dd++) dayOpts += '<option value="' + dd + '"' + (dd === d ? " selected" : "") + '>' + dd + '일</option>';
-  return '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="y">' + yearOpts + '</select>' +
-    '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="m">' + monthOpts + '</select>' +
-    '<select class="opt-input date-sel" data-which="' + prefix + '" data-part="d">' + dayOpts + '</select>';
+  return '<input type="number" class="opt-input date-y" data-which="' + prefix + '" style="width:64px;" min="2024" max="2030" value="' + y + '"/><span style="color:var(--muted);align-self:center;font-size:12px;">년</span>' +
+    '<input type="number" class="opt-input date-m" data-which="' + prefix + '" style="width:52px;" min="1" max="12" value="' + m + '"/><span style="color:var(--muted);align-self:center;font-size:12px;">월</span>' +
+    '<input type="number" class="opt-input date-d" data-which="' + prefix + '" style="width:52px;" min="1" max="31" value="' + d + '"/><span style="color:var(--muted);align-self:center;font-size:12px;">일</span>';
 }
 
 function printTripAsPDF() {
@@ -980,14 +972,21 @@ function render() {
 
 function attachEvents() {
   function readDateSelects(which) {
-    var y = document.querySelector('.date-sel[data-which="' + which + '"][data-part="y"]');
-    var m = document.querySelector('.date-sel[data-which="' + which + '"][data-part="m"]');
-    var d = document.querySelector('.date-sel[data-which="' + which + '"][data-part="d"]');
+    var y = document.querySelector('.date-y[data-which="' + which + '"]');
+    var m = document.querySelector('.date-m[data-which="' + which + '"]');
+    var d = document.querySelector('.date-d[data-which="' + which + '"]');
     if (!y || !m || !d) return "";
-    var mm = ("0" + m.value).slice(-2), dd = ("0" + d.value).slice(-2);
-    return y.value + "-" + mm + "-" + dd;
+    var yearNum = parseInt(y.value, 10) || new Date().getFullYear();
+    var monthNum = parseInt(m.value, 10) || 1;
+    if (monthNum < 1) monthNum = 1; if (monthNum > 12) monthNum = 12;
+    var dayNum = parseInt(d.value, 10) || 1;
+    var maxDay = new Date(yearNum, monthNum, 0).getDate();
+    if (dayNum > maxDay) dayNum = maxDay;
+    if (dayNum < 1) dayNum = 1;
+    var mm = ("0" + monthNum).slice(-2), dd = ("0" + dayNum).slice(-2);
+    return yearNum + "-" + mm + "-" + dd;
   }
-  document.querySelectorAll(".date-sel").forEach(function (sel) {
+  document.querySelectorAll(".date-y, .date-m, .date-d").forEach(function (sel) {
     sel.addEventListener("change", function () {
       var which = sel.getAttribute("data-which");
       var iso = readDateSelects(which);
